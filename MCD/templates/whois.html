@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>WIBL</title>
+
+    <style>
+
+            table th {
+                font-weight: normal; }
+
+            table td {
+                border-bottom:solid 1px #f8f8f8;
+            }
+
+            table > thead > tr > th,
+            table > tbody > tr > th,
+            table > tfoot > tr > th,
+            table > thead > tr > td,
+            table > tbody > tr > td,
+            table > tfoot > tr > td {
+                padding: 5px; 
+            }
+
+            table thead tr th {
+                width : 20px
+                font-size: 12px;
+                color: #121212;
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 0.05em;
+                background: #aaaaaa;
+                text-align: left;
+            }
+
+      #container {
+        width: 840px;
+        margin: 10px auto;
+        padding: 20px;
+        border: 1px solid #000000;
+      }
+      #header {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #000000;
+      }
+      #content {
+        width: 530px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #000000;
+      }
+      #sidebar {
+        width: 210px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #000000;
+      }
+      #footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #000000;
+                text-align: center;
+      }
+      @media ( max-width: 820px ) {
+        #container {
+          width: auto;
+        }
+        #content {
+          float: none;
+          width: auto;
+        }
+        #sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+
+      <div id="header">
+        <h1>누가 악성댓글을 달았는가?</h1>
+      </div>
+    <div id="blacklist">
+        <table>
+            <thead>
+            <tr>
+                <th>악성 유저</th>
+                <th>악성 댓글</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in range(nick.size) %}
+                <tr> 
+                    <td>{{nick[i]}}</td>
+                    <td>{{cont[i]}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </body>
+</html>
