@@ -52,61 +52,34 @@ def remove_punc(x):
     for i in x:
         if i not in string.punctuation + "ㅡㅜㅠㅋㅎㄷ":
             new_string.append(i)
-            # print(i)
-        # print(i)
     new_string = "".join(new_string)
-    # print(new_string)
-    # print("===================")
-    # print(new_string)
     return new_string
 
 def get_data():
-# =============================================================================
-#     print("처음형태 : ")
-#     print(data)
-#     print("=====================\n\n\n")
-# =============================================================================
     list1 = list()
     list2 = list()
     list3 = list()
     
     for i in data["content\tlable"]:
         list1.append(i.split("\t"))
-# =============================================================================
-#     print("가공을 위해 나눈 형태 : ")
-#     print(list1)
-#     print("=====================\n\n\n")
-# =============================================================================
+
     for i in range(len(list1)):
-        # print("가공 전 데이터 : " + list1[i][0])
         list1[i][0] = remove_punc(list1[i][0])
-        # print("특수문자 제거 : " + list1[i][0])
         result = sc.check(list1[i][0])
         print(result)
         dict_result = result.as_dict()
-        # print("맞춤법 제대로 : " + dict_result["checked"])
         text = remove_JS(dict_result["checked"])
-        # print("어미, 조사 제거 : " + text)
         text = remove_Fire(text)
-        # print("불용어 제거 : " + text)
         list2.append(text)
         list3.append(int(list1[i][1]))
-        # print("==============={}==================".format(i))
-    # print("=====================\n\n\n")
 
     df['content'] = list2
     df['label'] = list3
-# =============================================================================
-#     print("최종 형태 : ")
-#     print(df)
-#     print("=====================\n\n\n")
-# =============================================================================
     df.to_csv("data_test.csv", index = False) # 일단 최종 형태 저장
     
     x = df['content']
     y = df['label']
-    
-    
+        
     #툴 만들기
     tool = CountVectorizer()
     tool.fit(x)

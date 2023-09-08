@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import csv
 import re
 
-url = "https://www.fmkorea.com/best2/5234657812"
+url = "원하는 사이트를 넣고 형식을 변환해야 합니다."
 
 def crawling_data(url):
     
@@ -21,22 +21,16 @@ def crawling_data(url):
     html = urlopen(url)
     bs_obj = BeautifulSoup(html.read(),"html.parser")
     div_name_big = bs_obj.find("div",{"id":"bd_capture"})
-     # print(div_name)
     div_name_mid = div_name_big.find("div",{"class","top_area ngeb"})
-     # print(div_mid)
     div_name =div_name_mid.find("span",{"class":"np_18px_span"})
      
     Title = div_name.text
     Title = Title.replace(" ","")
     Title = Title.replace("\"", "")
     
-    # print(Title)
-    
     div_big = bs_obj.find("div",{"id":"cmtPosition"})
     ul = div_big.find("ul",{"class":"fdb_lst_ul"})
     li = ul.findAll("li")
-    #정규식
-    # ^comment\_ == comment_로 시작하는 class 찾아오기
     
     for item in li:
         list_row = []

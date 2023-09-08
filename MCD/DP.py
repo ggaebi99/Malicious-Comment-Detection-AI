@@ -10,12 +10,7 @@ def remove_punc(text):
     for i in text:
         if i not in string.punctuation + "ㅡㅜㅠㅋㅎㄷ":
             new_string.append(i)
-            # print(i)
-        # print(i)
     new_string = "".join(new_string)
-    # print(new_string)
-    # print("===================")
-    # print(new_string)
     return new_string
 
 def remove_JS(text):
@@ -24,9 +19,7 @@ def remove_JS(text):
     for word in okt.pos(text, stem=True): #어간 추출
         if word[1] not in ['Josa', 'Eomi', 'Punctuation']: #조사, 어미, 구두점 제외 
             clean_words.append(word[0])
-    # print(clean_words) #['스토리', '진짜', '너무', '노잼']
     text = ' '.join(clean_words)
-    # print(document) #스토리 진짜 너무 노잼
     return text
         
 def remove_Fire(text):
@@ -52,10 +45,5 @@ def process_All(text):
     # print(x)
     return x
 
-# process_All("뭐야 시ㅡ발아")
-
-text = "만약에 뭐야 시ㅡ발아"
-
+text = "예시"
 data = remove_Fire(remove_JS(remove_punc(text)))
-
-print(data)

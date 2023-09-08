@@ -26,8 +26,6 @@ def whois():
         data = np.array(data)
         nick = data[:,0]
         cont = data[:,1]
-        # print(type(nick))
-        # print(nondata)
         msg = render_template("whois.html", nick = nick, 
                               cont = cont)
     else:
